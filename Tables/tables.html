@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <script src="./Viz.js"></script>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+    </body>
+    <script type="text/javascript">
+        // Parse the DOT syntax into a graphlib object.
+        var graph = `
+digraph improv {
+autosize=false;
+size="25.7,8.3!";
+nodesep=0.75;
+ranksep=0.75;
+node[shape=record];
+
+struct1[label="
+<f0>UNIVERSITY THEATRE|
+<f1>?|
+<f2>?|
+<f3>?|
+<f4>?
+"];
+
+struct2[label="
+<f0>TONIGHT AT 8:30|
+<f1>Sills 1950|
+<f2>Mike Nichols|
+<f3>Shepherd - actor
+"];
+
+struct3[
+label="
+<f0>THE PLAYWRIGHT TH. CLUB|
+<f1>Sills|
+<f2>Shepherd\n Trodnick|
+<f3>Elaine May\n Mike Nichols|
+<f4>Jo Forsberg|
+<f5>Ja pierdolę\n Magda, pisz wyraźniej|
+<f6>Ja pierdolę|
+<f7>Barbara Harris|
+<f8>Tony Holland|
+<f9>Zohra Lampert|
+<f10>Omar
+"];
+
+struct4[
+label="
+<f0>THE COMPASS|
+<f1>Sills|
+<f2>Shepherd|
+<f3>Mike Nichols \n  Elaine May|
+<f4>Del Close St.Louis|
+<f5>Flicker\n
+Theodore J\n
+St. Louis
+"];
+
+struct5[
+label="
+<f0>THE SECOND CITY 1959|
+<f1>Sills|
+<f2>Barbara Harris\n
+Boateng KURWA NIE DA SIĘ PRZECZYTAĆ\n
+Troobnick|
+<f3> ???|
+<f4> '61 Del Close|
+<f5> ???|
+<f6> 1966: Mick Napier
+"];
+
+structGameTh [
+label="
+<f0>TAME THEATRE 1965|
+<f1>Sills & Spolin
+"];
+
+structTheBodyPolitic [
+label="
+<f0>THE BODY POLITIC|
+<f1> 1969 Sills
+"];
+
+structSecondCityTouringCompany [
+label="
+<f0>S.C. TOURING COMPANY|
+<f1> 1965
+"];
+
+structSecondCityToronto [
+label="
+<f0>S.C. TORONTO 1993|
+<f1> Del Close
+"];
+
+structTheCommitee [
+label="
+<f0>THE COMMITEE 1963-73|
+<f1>The Meyersons|
+<f2>Del Close
+"];
+
+structImprovOlympics[
+label="
+<f0>IMPROV OLYMPICS|
+<f1>Halpein\n
+Del Close 1983
+"    
+];
+
+structImprovOlympicsLA[
+label="
+<f0>IMPROV OLYMPICS LA
+"    
+];
+
+
+structTheCommitee->structImprovOlympics;
+structImprovOlympics->structImprovOlympicsLA;
+
+structHalpeinInChicago[
+label="
+<f0>1980 HALPEIN IN CHICAGO|
+<f1>CO TO JEST?!"    
+];
+
+structImprovOlympics->structHalpeinInChicago;
+struct10->structHalpeinInChicago;
+
+structImprovOlympicsInNY[
+label="<f0>IMPROV OLYMPICS IN NY|
+<f1>DAVID SHGÓWNIANESKRÓTYNAZWISK"
+]
+
+struct10:f1->structImprovOlympicsInNY:f1;
+
+structSecondCity[
+label="
+<f0>SECOND CITY DETROIT 1993|
+<f1>SECOND CITY LA 1989|
+<f2>SECOND CITY LAS VEGAS 2001    
+"];
+
+structPracticalTheater[
+label="
+<f0>PRACTICAL THEATER    
+"];
+
+structTheSecondCityEtc[
+label="THE SECOND CITY, etc."    
+];
+
+structSecondCityToronto:f1->structTheCommitee:f2;
+struct5:f4->structTheCommitee:f2;
+struct5->structSecondCityTouringCompany;
+struct5:f1->structGameTh;
+structGameTh->structTheBodyPolitic;
+
+struct5->structSecondCity->structPracticalTheater->structTheSecondCityEtc;
+
+struct6[
+label="
+<f0>THE DREMUE 1960-64|
+<f1>Flicker
+"];
+
+struct7[
+label="
+<f0>COMMUNITY MAKERS|
+<f1>Shepherd\n
+Howard Jerome
+"];
+
+struct8[
+shape=record
+rankdir=TB
+label="<f0>GROUP CREATIVITY PROJECT 1972|<f1>OPTION CITY"
+];
+
+struct9[
+label="
+<f0>THE RESPONSIVE SCENE|
+<f1>Michael Golding 1972 radio
+"
+];
+
+structLookToOttawa[
+label="<f0>LOOK TO OTTAWA|
+<f1>Jamie Willie Wyllie"    
+];
+
+struct9->structLookToOttawa;
+
+structCanadianImprovGames[
+    label="<f0>CANADIAN IMPROV GAMES|
+    <f1>Jamie Willie Wyllie"
+];
+
+structLookToOttawa->structCanadianImprovGames;
+structImprovOlympicsInNY->structCanadianImprovGames;
+
+struct10[
+label="
+<f0>THE IMPROV OLYMPICS\n
+The space 1972|
+<f1>Improv Olympics\n
+Improv Games
+"];
+
+
+
+struct2:f1->struct4:f1;
+struct2:f2->struct4:f3;
+struct2:f3->struct4:f2;
+struct3:f2->struct4:f2;
+struct3:f1->struct4:f1;
+
+struct4:f1->struct5:f1;
+struct3:f7->struct5:f2;
+struct4:f4->struct5:f4;
+
+struct4:f5->struct6:f1;
+
+struct4:f2->struct7:f1;
+struct7->struct8->struct9->struct10;
+
+rankdir=LR;
+}
+`;
+
+var val = Viz(graph, "svg");
+document.getElementById("container").innerHTML = val;
+
+    </script>
+</html>

@@ -1,0 +1,111 @@
+digraph improv {
+node[shape=record];
+
+struct1[label="
+<f0>UNIVERSITY THEATRE|
+<f1>?|
+<f2>?|
+<f3>?|
+<f4>?
+"];
+
+struct2[label="
+<f0>TONIGHT AT 8:30|
+<f1>Sills 1950|
+<f2>Mike Nichols|
+<f3>Shepherd - actor
+"];
+
+struct3[
+label="
+<f0>THE PLAYWRIGHT TH. CLUB|
+<f1>Sills|
+<f2>Shepherd\n Trodnick|
+<f3>Elaine May\n Mike Nichols|
+<f4>Jo Forsberg|
+<f5>Ja pierdolę\n Magda, pisz wyraźniej|
+<f6>Ja pierdolę|
+<f7>Barbara Harris|
+<f8>Tony Holland|
+<f9>Zohra Lampert|
+<f10>Omar
+"];
+
+struct4[
+label="
+<f0>THE COMPASS|
+<f1>Sills|
+<f2>Shepherd|
+<f3>Mike Nichols \n  Elaine May|
+<f4>Del Close St.Louis|
+<f5>Flicker\n
+Theodore J\n
+St. Louis
+"];
+
+struct5[
+label="
+<f0>THE SECOND CITY 1959|
+<f1>Sills|
+<f2>Barbara Harris\n
+Boateng KURWA NIE DA SIĘ PRZECZYTAĆ\n
+Troobnick|
+<f3> ???|
+<f4> `61 Del Close|
+<f5> ???|
+<f6> 1966: Mick Napier
+"];
+
+struct6[
+label="
+<f0>THE DREMUE 1960-64|
+<f1>Flicker
+"];
+
+struct7[
+label="
+<f0>COMMUNITY MAKERS|
+<f1>Shepherd\n
+Howard Jerome
+"];
+
+struct8[
+shape=record
+rankdir=TB
+label="<f0>GROUP CREATIVITY PROJECT 1972|<f1>OPTION CITY"
+];
+
+struct9[
+label="
+<f0>THE RESPONSIVE SCENE|
+<f1>Michael Golding 1972 radio
+"
+];
+
+struct10[
+label="
+<f0>THE IMPROV OLYMPICS\n
+The space 1972|
+<f1>Improv Olympics\n
+Improv Games
+"
+];
+
+struct2:f1->struct4:f1;
+struct2:f2->struct4:f3;
+struct2:f3->struct4:f2;
+struct3:f2->struct4:f2;
+struct3:f1->struct4:f1;
+
+struct4:f1->struct5:f1;
+struct3:f7->struct5:f2;
+struct4:f4->struct5:f4;
+
+struct4:f5->struct6:f1;
+
+struct4:f2->struct7:f1;
+struct7->struct8->struct9->struct10;
+
+rankdir=LR;
+}
+

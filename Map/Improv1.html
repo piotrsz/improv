@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+        <script type="text/javascript" src="./canada.js"></script>
+        <script type="text/javascript" src="./utils.js"></script>
+        <script type="text/javascript">
+        
+        var Cities = {
+            Calgary  : {name: "Calgary",   ts: 1977, cig: null, factor: 2, radius: 5, population: 1096833, area:  825.29, coords: [-114.667, 51.05]},
+            Vancouver: {name: "Vancouver", ts: 1980, cig: 1989, factor: 1, radius: 5, population:  603502, area:  114.97, coords: [-123.1, 49.25]},
+            Edmonton : {name: "Edmonton",  ts: 1981, cig: null, factor: 1, radius: 5, population:  812201, area:  684.37, coords: [-113.5006, 53.5742]},
+            Toronto  : {name: "Toronto",   ts: 1981, cig: 1992, factor: 1, radius: 5, population: 2615060, area:  630.21, coords: [-79.4667, 43.6834]},
+            Ottawa   : {name: "Ottawa",    ts: null, cig: 1977, factor: 2, radius: 5, population:  883391, area: 2790.22, coords: [-75.07, 45.41667]},
+            Kingston : {name: "Kingston",  ts: null, cig: 1989, factor: 1, radius: 5, population:  123363, area:  451.17, coords: [-76.5, 44.2334]},
+            Seattle  : {name: "Seattle",   ts: 1983, cig: null, factor: 1, radius: 5, population: 652405, area: 369.2, coords: [-122.333, 47.6097]}
+        }
+        
+        // IMPRO GAMES        
+        
+        var improGamesCities = [Cities.Calgary, Cities.Vancouver, Cities.Edmonton, Cities.Toronto, Cities.Seattle];
+        
+        var improGames = {
+            type: "FeatureCollection",
+            features: improGamesCities.map(makeCityPointFeature)
+        };
+        
+        var improGamesConnections = {
+            type: "FeatureCollection",
+            features: improGamesCities.slice(1).map(function (item){return makeConnection(improGamesCities[0], item)})
+        };
+        
+        var improvGamesColor = "#ff0000";
+                
+        var improGamesStyle = {
+            fillColor: improvGamesColor,
+            color: improvGamesColor
+        };
+        
+        var improGamesConnectionsStyle = {
+            color: improvGamesColor,
+            weight: 1
+        }
+        
+        // CANADIAN IMPROV GAMES
+        
+        var canadianImprovGamesColor = "#0000ff";
+        
+        var canadianImprovGamesCities = [Cities.Ottawa, Cities.Vancouver, Cities.Toronto, Cities.Kingston]
+        
+        var canadianImprovGames = {
+            type: "FeatureCollection",
+            features: canadianImprovGamesCities.map(makeCityPointFeature)
+        };
+        
+        var canadianImprovGamesConnections = {
+            type: "FeatureCollection",
+            features: canadianImprovGamesCities.slice(1).map(function (item){return makeConnection(canadianImprovGamesCities[0], item)})
+        };
+        
+        var canadianImprovGamesStyle = {
+            fillColor: canadianImprovGamesColor,
+            color: canadianImprovGamesColor
+        }
+        
+        var canadianImprovGamesConnectionsStyle = {
+            color: canadianImprovGamesColor,
+            weight: 1
+        }
+        
+        // GENERAL
+        
+        var canadaLayerStyle = {
+            fillColor: "#fff",
+            color: "#888",
+            weight: 2
+        };
+        
+        var view = [66.57, -105.11],
+            zoom = 3.5;
+        
+        
+        </script>
+        <style type="text/css">
+        .map {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        table {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            margin: 0;
+        }
+        
+        td {
+            width: 50%;
+        }
+        
+        body, html {
+            margin: 0
+        }
+        
+        .leaflet-container {
+            background-color: #eee;
+        }
+        
+        .legend {
+            height: 20px;
+            font-family: Arial;
+            font-weight: bold;
+        }
+        
+        .label {
+            font-family: Arial;
+            color: #000;
+        }
+        /*
+        .ts {
+            color: #ff0000;
+        }
+        
+        .cig {
+            color: #0000ff;
+        }
+        */
+        </style>
+    </head>
+    <body>        
+        <div id="map1" class="map"></div>
+        
+        <script type="text/javascript">
+        
+        function pointToLayer (feature, latlng) {
+            return L.circleMarker(latlng, {
+                radius: (feature.properties.factor || 1) * feature.properties.radius
+            })            
+        }
+        
+        function onEachFeature (map) {
+            return function (feature, layer) {
+                
+                var label = "";
+                label += '<span class="label">' + feature.properties.name + '</span>';
+                /*
+                if (feature.properties.cig)
+                    label += '<span class="cig">,&nbsp;' + feature.properties.cig + '</span>';
+                if (feature.properties.ts)
+                    label += '<span class="ts">,&nbsp;' + feature.properties.ts + '</span>';
+                */
+                L.marker(layer.getBounds().getCenter(), {
+                    icon: L.divIcon({
+                        className: 'label',
+                        html:  label,
+                        iconSize: [100, 18]
+                    })
+                }).addTo(map);
+            }
+        }        
+        
+        var map1 = L.map("map1", {
+            //crs: L.CRS.EPSG4326
+            crs: L.CRS.EPSG3857
+        }).setView(view, zoom);
+        
+        var canadaLayer1 = L.geoJson(canada, {
+            style: canadaLayerStyle
+        }).addTo(map1);        
+        
+        var improv1 = L.geoJson(canadianImprovGames, {
+            style: canadianImprovGamesStyle,            
+            pointToLayer: pointToLayer,
+            onEachFeature: onEachFeature(map1)
+        }).addTo(map1);
+        
+        var conn1 = L.geoJson(canadianImprovGamesConnections, {
+            style: canadianImprovGamesConnectionsStyle
+        }).addTo(map1);
+        
+        var improv2 = L.geoJson(improGames, {
+            style: improGamesStyle,
+            pointToLayer: pointToLayer,
+            onEachFeature: onEachFeature(map1)
+        }).addTo(map1);
+        
+        var conn2 = L.geoJson(improGamesConnections, {
+            style: improGamesConnectionsStyle
+        }).addTo(map1);
+        </script>
+    </body>
+</html>
