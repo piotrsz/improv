@@ -7,6 +7,13 @@
         <script type="text/javascript" src="./utils.js"></script>
         <script type="text/javascript">
         
+        var state;
+        try {
+            state = JSON.parse(window.location.hash.substr(1));
+        } catch (e) {
+            state = {crs:"EPSG3857"};
+        }
+        
         var Cities = {
             Calgary  : {name: "Calgary",   ts: 1977, cig: null, factor: 2, radius: 5, population: 1096833, area:  825.29, coords: [-114.667, 51.05]},
             Vancouver: {name: "Vancouver", ts: 1980, cig: 1989, factor: 1, radius: 5, population:  603502, area:  114.97, coords: [-123.1, 49.25]},
@@ -164,8 +171,7 @@
         }        
         
         var map1 = L.map("map1", {
-            //crs: L.CRS.EPSG4326
-            crs: L.CRS.EPSG3857
+            crs: L.CRS[state.crs]
         }).setView(view, zoom);
         
         var canadaLayer1 = L.geoJson(canada, {
