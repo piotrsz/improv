@@ -23,8 +23,8 @@
                 "coordinates": [
                     [
                         [0, 90],
-                        [0, 0],
-                        [-180, 0],
+                        [0, -90],
+                        [-180, -90],
                         [-180, 90],
                         [0, 90]
                     ]
@@ -86,19 +86,9 @@
             features: canadianImprovGamesCities.map(makeCityPointFeature)
         };
         
-        var canadianImprovGamesConnections = {
-            type: "FeatureCollection",
-            features: canadianImprovGamesCities.slice(1).map(function (item){return makeConnection(canadianImprovGamesCities[0], item)})
-        };
-        
         var canadianImprovGamesStyle = {
             fillColor: canadianImprovGamesColor,
             color: canadianImprovGamesColor
-        }
-        
-        var canadianImprovGamesConnectionsStyle = {
-            color: canadianImprovGamesColor,
-            weight: 1
         }
         
         // GENERAL
@@ -110,18 +100,16 @@
             weight: 2
         };
         
-        var view = [52, -100],
-            zoom = 4.75;
+        var view = [50, -100],
+            zoom = 4;
         
         
         </script>
         <style type="text/css">
         .map {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
+            width: 1024px;
+            height: 768px;
+            margin: auto;
         }
         
         table {
@@ -143,28 +131,49 @@
             background-color: #eee;
         }
         
-        .legend {
-            height: 20px;
-            font-family: Arial;
-            font-weight: bold;
-        }
-        
         .label {
             font-family: Arial;
             color: #000;
             font-size: 16px;
         }
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}        
+        .legend {
+            line-height: 22px;
+            color: #555;
+        }
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7;
+        }        
         
         .all {
             color: #000;
         }
         
         .ts {
-            color: #FFCDCD;
+            color: #FF7B7B;
         }
         
         .cig {
-            color: #CDCDFF;
+            color: #7676FF;
+        }
+
+        .leaflet-control-zoom {
+            display: none;
         }
         </style>
     </head>
@@ -175,7 +184,7 @@
         
         function pointToLayer (feature, latlng) {
             return L.circleMarker(latlng, {
-                radius: 2*(feature.properties.factor || 1) * feature.properties.radius
+                radius: 1.5*(feature.properties.factor || 1) * feature.properties.radius
             })            
         }
         
@@ -195,8 +204,12 @@
                     label += '<span class="'+cig+'">&nbsp;' + feature.properties.cig + '</span>';
                     
                 var anchor = [-15, -10];
-                if (feature.properties.name === "Kingston")
+                if (feature.properties.name === "Kingston") {
                     anchor[1] = -3;
+                }
+                if (feature.properties.name === "Vancouver") {
+                    anchor = [-20, -2];
+                }
                 L.marker(layer.getBounds().getCenter(), {
                     icon: L.divIcon({
                         className: 'label',
@@ -226,19 +239,30 @@
             onEachFeature: onEachFeature(map1)
         }).addTo(map1);
         
-        /*var conn1 = L.geoJson(canadianImprovGamesConnections, {
-            style: canadianImprovGamesConnectionsStyle
-        }).addTo(map1);*/
-        
         var improv2 = L.geoJson(improGames, {
             style: improGamesStyle,
             pointToLayer: pointToLayer,
             onEachFeature: onEachFeature(map1)
         }).addTo(map1);
         
-        /*var conn2 = L.geoJson(improGamesConnections, {
-            style: improGamesConnectionsStyle
-        }).addTo(map1);*/
+        var legend = L.control({position: 'bottomright'});
+
+        legend.onAdd = function (map) {
+
+            var div = L.DomUtil.create('div', 'info legend'),
+                colors = ["#FF7B7B", "#7676FF"],
+                labels = ["Theatresports", "Canadian Improv Games"];
+
+            // loop through our density intervals and generate a label with a colored square for each interval
+            for (var i = 0; i < colors.length; i++) {
+                div.innerHTML +=
+                    '<i style="background:' + colors[i] + ';border-radius: 50%"></i> ' + '&ndash;&nbsp;' + labels[i] + '<br>';
+            }
+
+            return div;
+        };
+
+        legend.addTo(map1);
         </script>
     </body>
 </html>
