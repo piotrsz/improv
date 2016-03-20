@@ -136,18 +136,18 @@
             color: #000;
             font-size: 16px;
         }
-.info {
-    padding: 6px 8px;
-    font: 14px/16px Arial, Helvetica, sans-serif;
-    background: white;
-    background: rgba(255,255,255,0.8);
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-radius: 5px;
-}
-.info h4 {
-    margin: 0 0 5px;
-    color: #777;
-}        
+        .info {
+            padding: 6px 8px;
+            font: 14px/16px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255,255,255,0.8);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+        }
+        .info h4 {
+            margin: 0 0 5px;
+            color: #777;
+        }        
         .legend {
             line-height: 22px;
             color: #555;
@@ -256,7 +256,7 @@
             // loop through our density intervals and generate a label with a colored square for each interval
             for (var i = 0; i < colors.length; i++) {
                 div.innerHTML +=
-                    '<i style="background:' + colors[i] + ';border-radius: 50%"></i> ' + '&ndash;&nbsp;' + labels[i] + '<br>';
+                    '<i style="background-color:' + colors[i] + ';"></i> ' + '&ndash;&nbsp;' + labels[i] + '<br>';
             }
 
             return div;
