@@ -19,304 +19,327 @@ nodesep=0.75;
 ranksep=0.75;
 node[shape=record];
 
-university[label="
-<title>THE UNIVERSITY THEATRE|
-<place>Chicago|
-<time>1898-present|
-|
-<weaver>Fritz Weaver|
-<asner>Ed Asner|
-<sills>Paul Sills|
-<shapli>Omar Shapli
-"];
+subgraph cluster_p {
+    style=filled;
+    color="#eeeeee";
+    label="PRE-IMPROV";
 
-tonight[label="
-<title>TONIGHT AT 8:30|
-<place>Chicago|
-<time>1950-1952/53|
-|
-<asner>Ed Asner|
-<sills>Paul Sills|
-<shapli>Omar Shapli|
-<shepherd>David Shepherd|
-<nichols>Mike Nichols|
-<petry>Ann Petry|
-<peisner>Marvin Peisner|
-<holland>Tony Holland
-"];
+    university[label="
+    <title>THE UNIVERSITY THEATRE|
+    <place>Chicago|
+    <time>1898-present|
+    |
+    <sills>Paul Sills ▲|
+    <weaver>Fritz Weaver|
+    <asner>Ed Asner|
+    <shapli>Omar Shapli ▲
+    "];
 
-playwrights[
-label="
-<title>The Playwrights Theatre Club|
-<place>Chicago|
-<time>1953-1955|
-|
-<asner>Ed Asner|
-<sills>Paul Sills|
-<shapli>Omar Shapli|
-<shepherd>David Shepherd|
-<nichols>Mike Nichols|
-<petry>Ann Petry|
-<peisner>Marvin Peisner|
-<holland>Tony Holland|
-<harris>Barbara Harris|
-<lampert>Zohra Lampert|
-<may>Elaine May|
-<troobnick>Eugene Troobnick|
-<forsberg>Jo Forsberg
-"];
+    tonight[label="
+    <title>TONIGHT AT 8:30|
+    <place>Chicago|
+    <time>1950-1952/53|
+    |
+    <shepherd>David Shepherd ■|
+    <sills>Paul Sills ▲|
+    <asner>Ed Asner|
+    <shapli>Omar Shapli ▲|
+    <nichols>Mike Nichols|
+    <petry>Ann Petry|
+    <peisner>Marvin Peisner|
+    <holland>Tony Holland ▲
+    "];
 
+    playwrights[
+    label="
+    <title>THE PLAYWRIGHTS THEATRE CLUB|
+    <place>Chicago|
+    <time>1953-1955|
+    |
+    <shepherd>David Shepherd ■|
+    <sills>Paul Sills ▲|
+    <troobnick>Eugene Troobnick ▲|
+    <asner>Ed Asner|
+    <shapli>Omar Shapli ▲|
+    <nichols>Mike Nichols|
+    <may>Elaine May|
+    <petry>Ann Petry|
+    <peisner>Marvin Peisner|
+    <holland>Tony Holland ▲|
+    <harris>Barbara Harris ▲|
+    <lampert>Zohra Lampert ▲|
+    <forsberg>Jo Forsberg ▲
+    "];
+};
 
 jo[
 label="
-<title>The Players Workshop|
+<title>THE PLAYERS WORKSHOP|
 <place>Chicago|
 <time>1971-2000|
 |
-<forsberg>Jo Forsberg
+<forsberg>Jo Forsberg ▲
 "];
 
-compass[
-label="
-<title>The Compass Players|
-<place>Chicago|
-<time>1955-1957|
-|
-<asner>Ed Asner|
-<sills>Paul Sills|
-<shapli>Omar Shapli|
-<shepherd>David Shepherd|
-<nichols>Mike Nichols|
-|
-<holland>Tony Holland|
-<harris>Barbara Harris|
-|
-<may>Elaine May|
-<troobnick>Eugene Troobnick|
-|
-<darden>Severn Darden|
-<duncan>Andrew Duncan|
-<bowen>Roger Bowen|
-<arkin>Alan Arkin|
-<alk>Howard Alk
-"];
+subgraph cluster_0 {
+    label="COMPASS";
+    color=black;
+    
+    compass[
+    label="
+    <title>THE COMPASS PLAYERS|
+    <place>Chicago|
+    <time>1955-1957|
+    |
+    <shepherd>David Shepherd ■|
+    <sills>Paul Sills ▲|
+    <troobnick>Eugene Troobnick ▲|
+    <asner>Ed Asner|
+    <shapli>Omar Shapli ▲|
+    <nichols>Mike Nichols|
+    <may>Elaine May|
+    <holland>Tony Holland ▲|
+    <harris>Barbara Harris ▲|
+    <darden>Severn Darden|
+    <duncan>Andrew Duncan|
+    <bowen>Roger Bowen|
+    <arkin>Alan Arkin|
+    <alk>Howard Alk
+    "];
 
-compass_off[
-label="
-<title>offshoot: The Compass Players at The Crystal Palace|
-<place>St. Louis|
-<time>1957, 1959, 1962|
-|
-<flicker>Theodore J.Flicker|
-<close>Del Close|
-|
-guest appearances:|
-Compass at Hyannis, 1962|
-Compass in Washington, 1963|
-Compass at the Somerset, Boston, 1963|
-Compass at Upstairs at the Downstairs, New York, 1964|
-Compass in Philadelphia, 1965|
-"];
+    compass_off[
+    label="
+    <title>THE COMPASS PLAYERS AT THE CRYSTAL PALACE|
+    <place>St. Louis|
+    <time>1957, 1959, 1962|
+    |
+    <flicker>Theodore J.Flicker|
+    <close>Del Close ▲ ●
+    "];
+    
+    compass_guest[
+    label="
+    <title>GUEST SHOWS|
+    |
+    Compass at Hyannis, 1962|
+    Compass in Washington, 1963|
+    Compass at the Somerset, Boston, 1963|
+    Compass at Upstairs at the Downstairs, New York, 1964|
+    Compass in Philadelphia, 1965
+    "];
+
+};
 
 nm[
 label="
-<title>Nichols and May: improvisational comedy duo|
+<title>NICHOLS and MAY:improvisational comedy duo|
 <place>New York|
 <time>1958-1961|
 |
-<may>Elaine May|
-<nichols>Mike Nichols
+<nichols>Mike Nichols|
+<may>Elaine May
 "];
 
-sc[
-label="
-<title>The Second City|
-<place>Chicago|
-<time>1959-present|
-|
-<sills>Paul Sills|
-<shapli>Omar Shapli|
-|
-<holland>Tony Holland|
-<harris>Barbara Harris|
-<lampert>Zohra Lampert|
-|
-<troobnick>Eugene Troobnick|
-<forsberg>Jo Forsberg|
-<darden>Severn Darden|
-<duncan>Andrew Duncan|
-<bowen>Roger Bowen|
-<arkin>Alan Arkin|
-<alk>Howard Alk|
-<sahlins>Bernard Sahlins|
-<close>Del Close (1961)|
-<myerson>Alan Myerson|
-<napier>Mick Napier (1996)
-"];
+subgraph cluster_1 {
+    label="SECOND CITY";
+    color=black;
+
+    sc[
+    label="
+    <title>THE SECOND CITY ▲|
+    <place>Chicago|
+    <time>1959-present|
+    |
+    <sills>Paul Sills|
+    <troobnick>Eugene Troobnick|
+    <sahlins>Bernard Sahlins|
+    <alk>Howard Alk|
+    <shapli>Omar Shapli|
+    <holland>Tony Holland|
+    <harris>Barbara Harris|
+    <lampert>Zohra Lampert|
+    <forsberg>Jo Forsberg|
+    <darden>Severn Darden|
+    <duncan>Andrew Duncan|
+    <bowen>Roger Bowen|
+    <arkin>Alan Arkin|
+    <close>Del Close (1961)|
+    <myerson>Alan Myerson|
+    <napier>Mick Napier ▲ (1996)
+    "];
+
+    sc_off[
+    label="
+    <title>OFFSHOTS|
+    |
+    the first Second City Touring Company, 1967|
+    The Second City, etc 1982 - present|
+    Second City Northwest, 1988-95|
+    <close>Second City, Toronto (Del Close ▲ ●) 1973 - present|
+    Second City at Square East, New York, 1961-66|
+    Second City Los Angeles, 1989 - present|
+    Second City Las Vegas, 2001-2008|
+    Second City Detroit 1993- 2009
+    "];
+};
 
 premise[
 label="
-<title>The Premise|
+<title>THE PREMISE|
 <place>New York, Washington, DC|
 <time>1960-1964|
 |
 <flicker>Theodore J.Flicker
 "];
 
-sc_off[
-label="
-<title>The SC offshoots|
-the first SC Touring Company, 1967|
-|
-The SC, etc 1982 - present|
-SC Northwest, 1988-95|
-<close>SC, Toronto (Del Close) 1973 - present|
-SC at Square East, New York, 1961-66|
-SC LA, 1989 - present|
-SC Las Vegas, 2001-2008|
-SC Detroit 1993- 2009
-"];
-
 committee[
 label="
-<title>The Committee|
+<title>THE COMMITTEE|
 <time>1963-1973|
 <place>San Francisco|
 |
-<close>Del Close|
+<close>Del Close ▲ ●|
 <myerson>Alan and Jessica Myerson
 "];
 
 dubb[
 label="
-<title>Dubbletaqu|
+<title>DUBBLETAQU|
 <place>Bloomington, Indiana|
 <time>1984-87|
 |
-<napier>Mick Napier 
+<napier>Mick Napier ▲ 
 "];
 
 annoyance[
 label="
-<title>The Annoyance Theater (1987-1989 Metraform)|
+<title>THE ANNOYANCE THEATER (1987-1989 Metraform)|
 <place>Chicago|
 <time>1987-present|
 |
-<napier>Mick Napier    
+<napier>Mick Napier ▲    
 "];
 
 game[
 label="
-<title>Game Theater|
+<title>GAME THEATER|
 <place>Chicago|
-<time> 1965-present|
+<time> 1965-?|
 |
-<sills>Paul Sills|
+<sills>Paul Sills ▲|
 <spolin>Viola Spolin
 "];
 
 body[
 label="
-<title>Body Politic|
+<title>BODY POLITIC|
 <place>Chicago|
-<time>1969-present|
+<time>1969-?|
 |
-<sills>Paul Sills
+<sills>Paul Sills ▲
 "];
 
 story[
 label="
-<title>Story Theater|
+<title>STORY THEATER|
 <place>Chicago|
-<time>1970-present|
+<time>1970-?|
 |
-<sills>Paul Sills
+<sills>Paul Sills ▲
 "];
 
 makers[
 label="
-<title>Community Makers|
-<place>|
+<title>THE COMMUNITY MAKERS|
+<place>New York|
 <time>1971-1972|
 |
-<shepherd>David Shepherd|
-<jerome>Howard Jerome
+<shepherd>David Shepherd ■|
+<jerome>Howard Jerome ■
 "];
 
 gcp[
 label="
-<title>Group Creativity Project (Option City)|
-<place>|
+<title>GROUP CREATIVITY PROJECT (Option City)|
+<place>New York|
 <time>1972|
 |
-<shepherd>David Shepherd|
-<jerome>Howard Jerome
+<shepherd>David Shepherd ■|
+<jerome>Howard Jerome ■
 "];
 
 responsive[
 label="
-<title>The Responsive Scene (radio show)|
-<place>|
+<title>THE RESPONSIVE SCENE (radio show)|
+<place>New York|
 <time>1972|
 |
-<shepherd>David Shepherd|
-<jerome>Howard Jerome
+<shepherd>David Shepherd ■|
+<jerome>Howard Jerome ■
 "];
 
 olympics[
 label="
-<title>The Improv Olympics|
+<title>THE IMPROV OLYMPICS ■|
 later Improv Olympix and Improv Games|
+<place>New York|
 <time>1972-1977|
 |
-<shepherd>David Shepherd|
-<halpern>Charna Halpern in Chicago (1981)
+<shepherd>David Shepherd ■|
+<jerome>Howard Jerome ■|
+<halpern>Charna Halpern ▲ ● ■ in Chicago (1981)
 "];
 
 canadian[
 label="
-<title>Canadian Improv Games 1977|
-<place>|
+<title>CANADIAN IMPROV GAMES|
+<place>Ottawa|
 <time>1977-present|
 |
-<shepherd>David Shepherd|
-<jerome>Howard Jerome|
+<shepherd>David Shepherd ■|
+<jerome>Howard Jerome ■|
 <willie>Jamie Willie Wylllie|
 <golding>Michael Golding
 "];
 
-io[
-label="
-<title>IO| 
-<place>Chicago|
-<time>1981-present|
-|
-<halpern>Charna Halpern|
-<close>Del Close
-"];
+subgraph cluster_2 {
+    label="IO";
+    color=black;
+    
+    io[
+    label="
+    <title>IO ●| 
+    <place>Chicago|
+    <time>1981-present|
+    |
+    <halpern>Charna Halpern ▲ ● ■|
+    <close>Del Close ▲ ●
+    "];
 
-iow[
-label="
-<title>IO West Theater|
-<place>LA|
-<time>1997-present|
-|
-<vaillancour>Paul Vaillancour
-"];
+    iow[
+    label="
+    <title>IO WEST|
+    <place>Los Angeles|
+    <time>1997-present|
+    |
+    <vaillancour>Paul Vaillancour
+    "];
+
+};
 
 wot[
 label="
-<title>workshops in Ottawa|
+<title>IMPROV OLYMPICS WORKSHOPS IN OTTAWA|
 <place>Ottawa|
 <time> mid 1970s|
 |
-<jerome>Howard Jerome|
-<willie>Jamie Willie Wyllie
+<jerome>Howard Jerome ■|
+<willie>Jamie Willie Wyllie ■
 "];
 
-
-university:asner->tonight:asner;
+edge [arrowhead=normal, color=grey];
 university:sills->tonight:sills;
+university:asner->tonight:asner;
 university:shapli->tonight:shapli;
 
 tonight:asner->playwrights:asner;
@@ -338,27 +361,42 @@ playwrights:harris->compass:harris;
 playwrights:may->compass:may;
 playwrights:troobnick->compass:troobnick;
 
-playwrights:forsberg->jo:forsberg;
+sc:forsberg->jo:forsberg;
 
 compass:sills->sc:sills;
 compass:shapli->sc:shapli;
 
 compass:shepherd->makers:shepherd;
-
 makers:shepherd->gcp:shepherd;
-
+makers:jerome->gcp:jerome;
 gcp:shepherd->responsive:shepherd;
-
+gcp:jerome->responsive:jerome;
 responsive:shepherd->olympics:shepherd;
+responsive:jerome->olympics:jerome;
+olympics:jerome->wot:jerome;
+wot:jerome->canadian:jerome;
+wot:willie->canadian:willie;
 
-canadian:willie->wot:willie;
 
+edge [arrowhead=normal, color=black];
+makers:title->gcp:title;
+
+gcp:title->responsive:title;
+
+responsive:title->olympics:title;
+
+wot:title->canadian:title;
+
+
+olympics:title->canadian:title;
+olympics:title->wot:title;
+
+/*compass:title->compass_off:title;*/
+/*sc:title->sc_off:title;*/
+io:title->iow:title;
+
+edge [arrowhead=normal, color=grey];
 olympics:halpern->io:halpern;
-
-olympics:shepherd->canadian:shepherd;
-
-compass:title->compass_off:title;
-sc:title->sc_off:title;
 compass_off:close->sc:close;
 
 compass:nichols->nm:nichols;
@@ -369,13 +407,11 @@ game:sills->body:sills;
 body:sills->story:sills;
 
 sc:close->committee:close;
-sc:close->sc_off:close;
+/*sc:close->sc_off:close;*/
 sc_off:close->io:close;
 
 sc:napier->dubb:napier;
 dubb:napier->annoyance:napier;
-
-io->iow;
 
 compass_off:flicker->premise:flicker;
 
