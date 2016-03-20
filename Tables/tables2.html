@@ -56,13 +56,13 @@ subgraph cluster_p {
     <place>Chicago|
     <time>1953-1955|
     |
+    <nichols>Mike Nichols|
+    <may>Elaine May|
     <shepherd>David Shepherd ■|
     <sills>Paul Sills ▲|
     <troobnick>Eugene Troobnick ▲|
     <asner>Ed Asner|
     <shapli>Omar Shapli ▲|
-    <nichols>Mike Nichols|
-    <may>Elaine May|
     <petry>Ann Petry|
     <peisner>Marvin Peisner|
     <holland>Tony Holland ▲|
@@ -91,20 +91,20 @@ subgraph cluster_0 {
     <place>Chicago|
     <time>1955-1957|
     |
+    <nichols>Mike Nichols|
+    <may>Elaine May|
     <shepherd>David Shepherd ■|
     <sills>Paul Sills ▲|
     <troobnick>Eugene Troobnick ▲|
     <asner>Ed Asner|
     <shapli>Omar Shapli ▲|
-    <nichols>Mike Nichols|
-    <may>Elaine May|
+    <alk>Howard Alk|
     <holland>Tony Holland ▲|
     <harris>Barbara Harris ▲|
     <darden>Severn Darden|
     <duncan>Andrew Duncan|
     <bowen>Roger Bowen|
-    <arkin>Alan Arkin|
-    <alk>Howard Alk
+    <arkin>Alan Arkin
     "];
 
     compass_off[
@@ -153,8 +153,8 @@ subgraph cluster_1 {
     <sills>Paul Sills|
     <troobnick>Eugene Troobnick|
     <sahlins>Bernard Sahlins|
-    <alk>Howard Alk|
     <shapli>Omar Shapli|
+    <alk>Howard Alk|
     <holland>Tony Holland|
     <harris>Barbara Harris|
     <lampert>Zohra Lampert|
@@ -365,7 +365,14 @@ sc:forsberg->jo:forsberg;
 
 compass:sills->sc:sills;
 compass:shapli->sc:shapli;
-
+compass:arkin->sc:arkin;
+compass:bowen->sc:bowen;
+compass:darden->sc:darden;
+compass:holland->sc:holland;
+compass:troobnick->sc:troobnick;
+compass:harris->sc:harris;
+compass:alk->sc:alk;
+compass:duncan->sc:duncan;
 compass:shepherd->makers:shepherd;
 makers:shepherd->gcp:shepherd;
 makers:jerome->gcp:jerome;
