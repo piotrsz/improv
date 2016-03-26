@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
         <script src="./Viz.js"></script>
-        <title>APPENDIX</title>
+        <title>APPENDIX 3</title>
         <style>
         </style>
     </head>
@@ -17,10 +17,11 @@
 digraph improv {
 autosize=true;
 concentrate=true;
-size="16.53,11.69!";
+size="16.53,11.69";
+/*graph [dpi=72];*/
 nodesep=0.75;
 ranksep=1.5;
-node[shape=record,fontname=Arial,fontsize=12];
+node[shape=record,fontname=Arial,fontsize=16.00];
 
 subgraph cluster_p {
     style=filled;
@@ -443,7 +444,7 @@ rankdir=LR;
 }
 `;
 
-var val = Viz(graph, "svg");
+var val = Viz(graph, "svg", "circo");
 document.getElementById("container").innerHTML = val;
 
 // manipulate the result svg using d3
@@ -457,7 +458,7 @@ d3.selectAll(".cluster")
 .select("text")
 .style({
     "font-weight": "bold",
-    "font-size": "larger",
+    "font-size": "22px",
     "font-family": "Helvetica, Arial, sans serif"
 });
 
