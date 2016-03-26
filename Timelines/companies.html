@@ -9,16 +9,15 @@
     </head>
     <body>
         <div id="container"></div>
-    </body>
-    <script>
-        
-        var csvDataUrl = "https://docs.google.com/spreadsheets/d/1tBcEc5DW2f90dYWNkzlu1CLCbCpGNvcf-dO3l_Hn1yQ/pub?gid=0&single=true&output=csv";
-        
-        d3.csv(csvDataUrl).get(function (error, rows) {
-            if (error) throw new Error(error);
+        <script>
             
-            console.log(rows);            
-        });
+            var csvDataUrl = "./companies.csv";
+            
+            d3.csv(csvDataUrl).get(function (error, rows) {
+                
+                console.log(rows);            
+            });
 
-    </script>
+        </script>    
+        </body>
 </html>
