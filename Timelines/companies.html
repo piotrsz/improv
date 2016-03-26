@@ -68,10 +68,7 @@
                     i = 0,
                     len = rows.length; 
                     
-                var color = d3.scale.linear()
-                    .domain([0, len])
-                    .range(["#d7191c", "#2c7bb6"])
-                    .interpolate(d3.interpolateHcl);
+                var color = d3.scale.category20b();
             
                 var table = d3.select("body")
                     .append("table");
