@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
+        <title>APPENDIX</title>
+        <style>
+
+            svg {
+                font-size: 10px;
+                margin: auto;
+            }
+
+            g {
+                overflow: visible;
+            }
+
+            text {
+                z-index: 20;
+            }
+
+            rect.pane {
+                cursor: move;
+                fill: none;
+                pointer-events: all;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+    </body>
+    <script>
+        
+        var data = [
+            [1699, `The colony of Pennsylvania re-ratified the Charter of William Penn	“Whosoever shall introduce into this province and territories any rude or riotous sports… stage-plays, masks, revels, bull baitings, cock-fighting, bonfires or shall practice the same and be lawfully convict thereof, such person or persons shall, for every such offense, be reputed as breakers of the peace, and shall forfeit and pay twenty shillings, or suffer ten days’ imprisonment at hard labor in the House of Correction.”.  (The Statutes at Large of Pennsylvania, II.1, 1700.)`],
+            [1700, `The Assembly of Pennsylvania passed a law prohibiting “stage-plays, masks, revels”.`],
+            [1706, `The prohibition against “stage-plays, masks, revels” was repassed in Pennsylvania (after having been repealed in England in 1705).`],	
+            [1709, `The Governor’s Council in New York forbade play acting.`],	
+            [1711, `The Quaker Assembly in Pennsylvania for a third time prohibited stage plays.`],	
+            [1712, `A Statute was passed in Charleston which prohibited “bear-baiting, foot ball playing, horse-raceing, enterludes or common plays” on Sunday.`],	
+            [1713, `The Assembly of Pennsylvania’s law prohibiting stage plays was again repealed by the British government.`],
+            [1718, `In the Connecticut colony, vagrancy laws were enacted prohibiting 	“rogues, vagabonds or sturdy beggars” from “begging, wandering or misordering him or themselves using unlawful games, or setting up and practicing any common plays”.`],
+            [1750, `The Massachusetts General Court passed a ban on all theatre in 1750, called	“An Act for Preventing Stage-Plays, and other Theatrical Entertainments.”`],
+            [1774, `the First Continental Congress passed the Articles Association. Article 8 stated:	“We will, in our several stations, promote economy, frugality and industry, and promote agriculture, arts and the manufactures of this country, especially that of wool; and we will discountenance and discourage every species of extravagance and dissipation, especially all horse-racing, all kinds of gaming, cock-fighting, exhibitions of shows , plays and other expensive diversions and entertainments.”.`],
+            [1778, `The ban was reissued by the Continental Congress`]	                        
+        ];
+
+        var w = 1024,
+        h = 768,
+        x = d3.time.scale()
+            .range([0, w]),
+        xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom")
+            .tickSize(-h, 1),
+            
+        y = d3.scale()
+            .linear()
+            .range([0,data.length]),
+        yAxis = d3.svg.axis()
+            .scale(y); 
+
+        var svg = d3.select("body").append("svg:svg")
+            .attr("width", w)
+            .attr("height", h+50)
+            .append("svg:g");
+
+        svg.append("svg:g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + h + ")");
+
+        svg.append("svg:rect")
+            .attr("class", "pane")
+            .attr("width", w)
+            .attr("height", h)
+            .call(d3.behavior.zoom().on("zoom", zoom));
+
+        x.domain([
+            new Date(d3.min(data, function(d){return d[0]}), 0, 0),
+            new Date(d3.max(data, function(d){return d[0]}), 0, 0)
+        ]);
+
+        draw();
+
+        function draw() {
+            console.log ("drawing");
+            svg.select("g.x.axis").call(xAxis).call(yAxis);
+        }
+
+        function zoom() {
+            console.log("zooming");
+            draw();
+        }
+
+    </script>
+</html>
