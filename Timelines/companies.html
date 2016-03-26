@@ -5,19 +5,118 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
         <title>APPENDIX</title>
         <style>
+            @media all {
+            body {
+                margin: 300px auto 0 auto;
+                font-family: Courier New, Courier, monospace;
+                font-size: 12px;
+            }
+            
+            table {
+                border-spacing: 1px 2px;
+                border:0;             
+                border-collapse: collapse;   
+            }
+            
+            table, tr, td, th {
+                border:1px solid grey;
+            }
+            
+            td {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            
+            .name {
+                width: 350px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .empty {
+                background-color: #fff !important;                
+            }
+            }
+            
+            @media screen {
+            img {
+                display: none;
+            }
+                
+            }
+            
+            @media print {
+            img {
+                width: 16px;
+                height: 16px;
+                padding:0;
+                margin:0;
+                display: block;
+            }
+                
+            }
         </style>
     </head>
     <body>
         <div id="container"></div>
         <script>
-            
             var csvDataUrl = "./companies.csv";
             
             d3.csv(csvDataUrl).get(function (error, rows) {
                 
-                console.log(rows);            
+                var start = 1955,
+                    end = 2017,
+                    range = d3.range(start, end),
+                    i = 0,
+                    len = rows.length; 
+                    
+                var color = d3.scale.linear()
+                    .domain([0, len])
+                    .range(["#d7191c", "#2c7bb6"])
+                    .interpolate(d3.interpolateHcl);
+            
+                var table = d3.select("body")
+                    .append("table");
+                
+                var th = table.append("thead").append("tr");
+                th.selectAll("th")
+                    .data(["Company Name"].concat(range))
+                    .enter()
+                    .append("th").html(function(d){
+                        if (typeof d === "string") return d;
+                        //if (+d === +start || +d === +end) return d; 
+                        return ("" + d).substr(2);
+                    }).attr("class", function(d){
+                        if (typeof d === "string") return "name";
+                        return "cell";                        
+                    });       
+                
+                var tr = table.append("tbody").selectAll("tr")
+                    .data(rows)
+                    .enter()
+                    .append("tr");
+                
+                tr.style("color", function(d, i){
+                    return color(i);
+                });
+                    
+                tr.append("td").html(function(d){
+                    return d.name;
+                }).attr("class", "name");
+                
+                range.forEach(function(year){
+                    tr.append("td").html(function(d, i){
+                        if (+d.begin <= year && year <= +(d.end|| end)) return `<img src="http://1x1px.me/${color(i).substr(1)}-1.png" ></img>`;
+                        return "&nbsp;";
+                    }).attr("class", function(d){
+                        if (+d.begin <= year && year <= +(d.end|| end)) return "filled";
+                        return "empty";
+                    }).style("background-color", function(d, i){
+                        return color(i);
+                    });
+                });
+                            
             });
 
         </script>    
+        
         </body>
 </html>
